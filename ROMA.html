@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Рома и его семья — история любви и заботы</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+            background: #fef7e8;
+            color: #2d2418;
+            scroll-behavior: smooth;
+            line-height: 1.4;
+        }
+
+        /* пастельная палитра */
+        :root {
+            --peach: #FFDDB7;
+            --mint: #C1F0DC;
+            --soft-lavender: #E8D9FF;
+            --warm-sand: #F3E9D2;
+            --coral: #FFA07A;
+            --deep-brown: #5A3E2B;
+            --shadow-sm: 0 10px 20px rgba(0,0,0,0.05), 0 6px 6px rgba(0,0,0,0.03);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* header */
+        .hero {
+            background: linear-gradient(135deg, #FFE0B5, #FFC9A5);
+            border-radius: 0 0 48px 48px;
+            padding: 48px 0 56px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "❤️ 🧸 🌟";
+            font-size: 100px;
+            position: absolute;
+            bottom: -20px;
+            left: -30px;
+            opacity: 0.1;
+            white-space: nowrap;
+            pointer-events: none;
+            transform: rotate(-10deg);
+        }
+
+        .hero::after {
+            content: "☀️ 🎈 🚀";
+            font-size: 90px;
+            position: absolute;
+            top: 0;
+            right: -20px;
+            opacity: 0.1;
+            pointer-events: none;
+            transform: rotate(5deg);
+        }
+
+        .avatar {
+            width: 140px;
+            height: 140px;
+            background: #ffffffcc;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 70px;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            border: 4px solid white;
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #7B3F00, #C25D2E);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: none;
+        }
+
+        .hero-tagline {
+            font-size: 1.25rem;
+            color: #5a3e2b;
+            margin-top: 12px;
+            font-weight: 500;
+            background: rgba(255,245,225,0.7);
+            display: inline-block;
+            padding: 8px 24px;
+            border-radius: 60px;
+            backdrop-filter: blur(4px);
+        }
+
+        /* общие стили секций */
+        section {
+            margin: 56px 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 32px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            background: #FFB07C;
+            border-radius: 4px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+            margin-top: 16px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 32px;
+            padding: 28px 22px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,200,150,0.4);
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.08);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+
+        .card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+            color: #C05A2A;
+        }
+
+        .card p {
+            color: #4b3a2a;
+            line-height: 1.5;
+        }
+
+        .pill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .pill {
+            background: #F4E2C6;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #6B3F1C;
+        }
+
+        /* галерея моментов */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .gallery-item {
+            background: #FFF6EA;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+            transition: 0.2s;
+        }
+
+        .gallery-img {
+            height: 180px;
+            background: linear-gradient(145deg, #FFE2C1, #FFD0AA);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 70px;
+            color: #AD6A3B;
+            transition: 0.2s;
+        }
+
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.02);
+        }
+
+        .gallery-caption {
+            padding: 18px 16px;
+            font-weight: 600;
+            background: white;
+            border-top: 2px dotted #ffd9b5;
+        }
+
+        .gallery-caption p {
+            font-weight: normal;
+            font-size: 0.9rem;
+            color: #6d4c2e;
+            margin-top: 6px;
+        }
+
+        /* цитата */
+        .quote-block {
+            background: var(--mint);
+            border-radius: 48px;
+            padding: 40px 32px;
+            text-align: center;
+            margin: 56px 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .quote-text {
+            font-size: 1.65rem;
+            font-style: italic;
+            font-weight: 500;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #2E5A48;
+        }
+
+        .quote-author {
+            margin-top: 20px;
+            font-weight: 600;
+            color: #1F4E3A;
+        }
+
+        /* интерактивное сердечко */
+        .love-section {
+            background: #FFEFE0;
+            border-radius: 48px;
+            padding: 36px 28px;
+            text-align: center;
+            margin: 40px 0 32px;
+        }
+
+        .heart-btn {
+            background: #FFB07C;
+            border: none;
+            font-size: 2rem;
+            padding: 16px 32px;
+            border-radius: 80px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: 0.2s;
+            box-shadow: 0 6px 0 #8B4C28;
+        }
+
+        .heart-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #8B4C28;
+        }
+
+        .heart-message {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #ad6b3e;
+            min-height: 70px;
+            font-weight: 500;
+        }
+
+        footer {
+            background: #D9C2A7;
+            border-radius: 40px 40px 0 0;
+            padding: 32px 20px;
+            text-align: center;
+            margin-top: 60px;
+            color: #3E2A1B;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 680px) {
+            .container {
+                padding: 0 20px;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+            .section-title {
+                font-size: 1.7rem;
+            }
+            .quote-text {
+                font-size: 1.3rem;
+            }
+            .avatar {
+                width: 110px;
+                height: 110px;
+                font-size: 55px;
+            }
+        }
+
+        .btn-small {
+            background: none;
+            border: 2px solid #e3bc8e;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.1s;
+        }
+        .btn-small:hover {
+            background: #fdebd0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <div class="container">
+        <div class="avatar">🧸✨</div>
+        <h1>Рома и его семья</h1>
+        <div class="hero-tagline">❤️ Где каждый день — маленькое чудо ❤️</div>
+    </div>
+</div>
+
+<main class="container">
+    <!-- Секция о Роме -->
+    <section>
+        <div class="section-title">📖 О Роме</div>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-icon">🚀</div>
+                <h3>Любознательный исследователь</h3>
+                <p>Роме 6 лет, он обожает конструкторы, динозавров и задавать вопрос «почему небо голубое?». Каждый день — новое открытие!</p>
+                <div class="pill-list">
+                    <span class="pill">🧩 LEGO-мастер</span>
+                    <span class="pill">🎨 Рисование красками</span>
+                    <span class="pill">🐾 Ухаживает за кошкой</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-icon">⚽</div>
+                <h3>Активный и добрый</h3>
+                <p>Рома обожает бегать во дворе, играть в футбол и помогать маме печь печенье. Говорит: «Самое вкусное — когда вместе!»</p>
+                <div class="pill-list">
+                    <span class="pill">🏃‍♂️ Веселые старты</span>
+                    <span class="pill">📚 Сказки на ночь</span>
+                    <span class="pill">🎵 Песни под гитару</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-icon">🌟</div>
+                <h3>Мечтатель</h3>
+                <p>Мечтает увидеть космос и стать изобретателем. Уже собрал из картона «ракету» и вместе с папой придумывает новые планеты.</p>
+                <div class="pill-list">
+                    <span class="pill">🌌 Астрономия</span>
+                    <span class="pill">🛠️ Мастерить</span>
+                    <span class="pill">📖 Читать энциклопедии</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция о родителе -->
+    <section>
+        <div class="section-title">👩‍👦 О родителе – главном наставнике</div>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-icon">🌿</div>
+                <h3>Мама Анна</h3>
+                <p>Терпеливая, творческая и мудрая. Анна работает дизайнером, но главный проект — воспитание Ромы. Вместе они рисуют, читают и путешествуют.</p>
+                <p>✨ «Каждый день мы учимся друг у друга» — говорит мама.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🏋️‍♂️</div>
+                <h3>Папа Алексей</h3>
+                <p>Лучший друг и защитник. Алексей учит Рому кататься на велосипеде, мастерить скворечники и не бояться трудностей. Вечерами они играют в шахматы.</p>
+                <p>🤝 «Доверие и пример — главное в воспитании».</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">❤️</div>
+                <h3>Семейные традиции</h3>
+                <p>Совместные завтраки, воскресные прогулки в парке, чтение вслух и обсуждение планов. Родители Ромы создали атмосферу, где ребёнок растёт счастливым.</p>
+                <div class="pill-list">
+                    <span class="pill">📸 Семейный альбом</span>
+                    <span class="pill">🍲 Кулинарные пятницы</span>
+                    <span class="pill">🎄 Свои ритуалы</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Галерея трогательных моментов -->
+    <section>
+        <div class="section-title">📸 Наши моменты</div>
+        <div class="gallery">
+            <div class="gallery-item">
+                <div class="gallery-img">🧸🎂</div>
+                <div class="gallery-caption">
+                    <span>🎈 1 годик – первый торт</span>
+                    <p>Счастливые глаза и улыбки родителей</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-img">🏞️👨‍👦</div>
+                <div class="gallery-caption">
+                    <span>🚴 Первая поездка на велосипеде</span>
+                    <p>Папа поддерживает, Рома сияет от радости</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-img">🎨🖌️</div>
+                <div class="gallery-caption">
+                    <span>Рисунок для мамы</span>
+                    <p>"Мама – солнышко" – гордо висит на холодильнике</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-img">📚🌙</div>
+                <div class="gallery-caption">
+                    <span>Чтение перед сном</span>
+                    <p>Самая уютная традиция: сказки и обнимашки</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Мудрая цитата о семье -->
+    <div class="quote-block">
+        <div class="quote-text">«Дети — это не вещи, которые надо лепить, а личности, которым надо помогать расти. Рома наполняет наш дом светом, а мы дарим ему крылья.»</div>
+        <div class="quote-author">— Родители Ромы</div>
+    </div>
+
+    <!-- Секрет счастливого детства / ценности -->
+    <section>
+        <div class="section-title">🌱 Секрет счастливого детства</div>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-icon">👂</div>
+                <h3>Слышать и принимать</h3>
+                <p>Родители Ромы всегда внимательны к его чувствам. Дома умеют разговаривать, утешать и радоваться мелочам.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🎲</div>
+                <h3>Играть вместе</h3>
+                <p>От настолок до шумных квестов — общий смех укрепляет связь сильнее любых слов.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📖</div>
+                <h3>Читать и обсуждать</h3>
+                <p>Совместное чтение книг — это мостик между мирами ребёнка и взрослого. Каждый вечер — 20 минут волшебства.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Интерактивный блок любви -->
+    <div class="love-section">
+        <h3 style="font-size: 1.8rem; margin-bottom: 12px;">💝 Подари тепло семье Ромы 💝</h3>
+        <button class="heart-btn" id="sendLoveBtn">
+            ❤️ ОТПРАВИТЬ ЛЮБОВЬ ❤️
+        </button>
+        <div class="heart-message" id="loveMessage"></div>
+        <p style="margin-top: 16px; font-size:0.85rem;">Нажми на сердечко – и пожелание добра отправится в нашу семью (виртуально, но от души!)</p>
+    </div>
+</main>
+
+<footer>
+    <p>✨ Рома и его родители — каждый день важны ✨</p>
+    <p style="margin-top: 10px;">Пусть ваша семья будет такой же тёплой, как этот сайт. ❤️</p>
+    <p style="margin-top: 16px; font-size:0.75rem;">Сайт создан с любовью к детям и их родителям</p>
+</footer>
+
+<script>
+    (function() {
+        // Интерактивная кнопка — отправляем тёплые фразы
+        const loveBtn = document.getElementById('sendLoveBtn');
+        const messageBox = document.getElementById('loveMessage');
+        
+        const warmMessages = [
+            "🌸 Спасибо! Рома и родители чувствуют вашу поддержку! 🌸",
+            "🧸 Такая искренняя забота! Пусть в семье всегда будет смех 🧸",
+            "❤️ Вы сделали наш день! Счастья, здоровья и душевного тепла! ❤️",
+            "🌞 Спасибо за лучик добра! Обнимаем вас виртуально! 🌞",
+            "⭐️ Главное богатство — это любовь близких. Вы это чувствуете! ⭐️",
+            "🎈 Рома говорит: 'Ура!' и машет ручкой! Спасибо за доброту 🎈"
+        ];
+        
+        let lastClickTime = 0;
+        
+        function sendLove() {
+            const now = Date.now();
+            if (now - lastClickTime < 800) return; // небольшая защита от спама
+            lastClickTime = now;
+            
+            // случайное сообщение
+            const randomIndex = Math.floor(Math.random() * warmMessages.length);
+            const message = warmMessages[randomIndex];
+            messageBox.innerHTML = `✨ ${message} ✨`;
+            messageBox.style.opacity = '0';
+            messageBox.style.transform = 'translateY(8px)';
+            setTimeout(() => {
+                messageBox.style.transition = 'all 0.3s ease';
+                messageBox.style.opacity = '1';
+                messageBox.style.transform = 'translateY(0)';
+            }, 10);
+            
+            // эффект анимации сердечек (создаём падающие сердечки)
+            createFloatingHearts();
+            
+            // через 3 секунды убираем сообщение, но не резко
+            setTimeout(() => {
+                if(messageBox.innerHTML.includes(message)) {
+                    messageBox.style.opacity = '0';
+                    setTimeout(() => {
+                        if(messageBox.innerHTML.includes(message))
+                            messageBox.innerHTML = '';
+                    }, 400);
+                }
+            }, 3800);
+        }
+        
+        function createFloatingHearts() {
+            // создаем несколько плавающих сердечек для радости
+            for(let i = 0; i < 12; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = ['❤️','🧡','💛','💖','💗','💓'][Math.floor(Math.random()*6)];
+                heart.style.position = 'fixed';
+                heart.style.bottom = '20px';
+                heart.style.left = Math.random() * window.innerWidth + 'px';
+                heart.style.fontSize = (20 + Math.random() * 28) + 'px';
+                heart.style.pointerEvents = 'none';
+                heart.style.zIndex = '9999';
+                heart.style.opacity = '0.9';
+                heart.style.filter = 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))';
+                heart.style.transition = 'transform 2s ease-out, opacity 2s ease-out';
+                document.body.appendChild(heart);
+                
+                // анимация вверх и исчезновение
+                setTimeout(() => {
+                    heart.style.transform = `translateY(-${300 + Math.random() * 200}px) translateX(${(Math.random() - 0.5) * 80}px)`;
+                    heart.style.opacity = '0';
+                }, 10);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 2000);
+            }
+        }
+        
+        loveBtn.addEventListener('click', sendLove);
+        
+        // дополнительный эффект: при наведении на карточки галереи появляется легкий звук? не нужно, но добавим легкую анимацию кликабельности
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const captionDiv = item.querySelector('.gallery-caption span');
+                if(captionDiv) {
+                    const tempMsg = captionDiv.innerText;
+                    messageBox.innerHTML = `✨ Вспоминаем "${tempMsg}" — драгоценный момент! ✨`;
+                    messageBox.style.opacity = '1';
+                    setTimeout(() => {
+                        messageBox.style.opacity = '0';
+                        setTimeout(() => { if(messageBox.innerHTML.includes('Вспоминаем')) messageBox.innerHTML = ''; }, 500);
+                    }, 2000);
+                }
+            });
+        });
+        
+        // Легкая анимация появления карточек при скролле (простая)
+        const cards = document.querySelectorAll('.card, .gallery-item, .quote-block');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(20px)';
+                    entry.target.style.transition = 'opacity 0.5s ease, transform 0.4s ease';
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, 50);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        cards.forEach(card => {
+            card.style.opacity = '0';
+            observer.observe(card);
+        });
+        
+        // маленькая фишка: показывать текущий год в футере
+        const footer = document.querySelector('footer p:first-child');
+        if(footer) {
+            const year = new Date().getFullYear();
+            const loveSpan = document.createElement('span');
+            loveSpan.style.display = 'block';
+            loveSpan.style.marginTop = '8px';
+            loveSpan.style.fontSize = '0.7rem';
+            loveSpan.innerText = `Семья Ромы © ${year} — связаны любовью`;
+            footer.appendChild(loveSpan);
+        }
+    })();
+</script>
+</body>
+</html>
